@@ -1,0 +1,125 @@
+<div class="container">
+
+    <mat-toolbar>
+        <span>Customers</span>
+        <div class="example-spacer"></div>
+        <button mat-raised-button color="primary" (click)="novo()"><mat-icon>add</mat-icon> Novo costomer</button>
+    </mat-toolbar>
+
+
+    <mat-form-field appearance="standard">
+        <mat-label>Filtro</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Digite sua busca" #input autocomplete="off">
+    </mat-form-field>
+
+    <div class="carddesktop mat-elevation-z8" *ngIf="desktop">
+
+      <table mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> TABELA 1 </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="age">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Age </th>
+          <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="city">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> City </th>
+          <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="acao">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element" class="acoes"> 
+                <a class="pointer edit" (click)="editar(element)" matTooltip="Editar"><mat-icon>edit</mat-icon></a>
+                <a class="pointer delete" (click)="deletar(element.id)" matTooltip="Deletar"><mat-icon>delete</mat-icon></a>
+            </td>
+          </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[10, 20, 30]"
+                 showFirstLastButtons 
+                 aria-label="Select page of periodic elements">
+    </mat-paginator>
+
+    </div>
+
+    <div class="cardmobile" *ngIf="mobile">
+
+      <table mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="id" >
+          <th mat-header-cell *matHeaderCellDef mat-sort-header style="display:none;"> TABELA 2 </th>
+          <td mat-cell *matCellDef="let element" style="display:none;"> {{element.id}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="name" class="mat-elevation-z8">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header style="display:none;"> Name </th>
+          <td mat-cell *matCellDef="let element"> 
+
+            <mat-card class="card3">
+
+                  <img src="../../../../assets/img/avatar.png">
+
+                  <h2>{{element.name}}</h2> 
+                  <p><b>Age:</b> {{element.age}}</p>
+                  <p><b>Cidade:</b> {{element.city}}</p>
+                  <div class="btns4">
+                    <button mat-raised-button color="primary" (click)="editar(element)">Editar</button>
+                    <button mat-raised-button color="warn" (click)="deletar(element.id)">Deletar</button>
+                  </div>
+            </mat-card>
+  
+          </td>
+        
+        </ng-container>
+      
+        <ng-container matColumnDef="age">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header style="display:none;"> Age </th>
+          <td mat-cell *matCellDef="let element" style="display:none;"> {{element.age}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="city">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header style="display:none;"> City </th>
+          <td mat-cell *matCellDef="let element" style="display:none;"> {{element.city}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="acao">
+            <th mat-header-cell *matHeaderCellDef style="display:none;"></th>
+            <td mat-cell *matCellDef="let element" class="acoes" style="display:none;"> 
+                <a class="pointer edit" (click)="editar(element)" matTooltip="Editar"><mat-icon>edit</mat-icon></a>
+                <a class="pointer delete" (click)="deletar(element.id)" matTooltip="Deletar"><mat-icon>delete</mat-icon></a>
+            </td>
+          </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    </div>
+
+    <div style="margin-top: 10px;">
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+       
+      aria-label="Select page of periodic elements">
+      </mat-paginator>
+
+    </div>
+
+
+    
+
+
+</div>

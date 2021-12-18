@@ -1,0 +1,29 @@
+<div class="container">
+    <h3>Editar registro</h3>
+
+    <div class="form">
+
+        <form [formGroup]="form" (ngSubmit)="salvar()">
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput autocomplete="off" formControlName="name" [(ngModel)]="data.name">
+            </mat-form-field><br>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Age</mat-label>
+                <input matInput autocomplete="off" formControlName="age" [(ngModel)]="data.age">
+            </mat-form-field><br>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>City</mat-label>
+                <input matInput autocomplete="off" formControlName="city" [(ngModel)]="data.city">
+            </mat-form-field><br>
+
+            <button mat-raised-button mat-dialog-close>Cancelar</button>
+            <button mat-raised-button color="primary" [disabled]="form.invalid" type="submit">Salvar</button>
+
+        </form>
+
+
+    </div>
+</div>
