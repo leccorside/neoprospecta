@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     console.log(usuario);
     console.log(senha);
 
-    if(usuario == 'leccorside' && senha == '123'){
+    if(usuario == 'teste' && senha == '123'){
       //redireciona para o dashboard
       this.fakeLogin();
     }
